@@ -88,17 +88,14 @@ def dameProductosAleatorios(producto, lista_productos, margen):
     while cont < 2:
         numAle = random.randint(0,len(lista_productos)-1)
         preciodif = int(lista_productos[numAle][1])-producto[2]
-        if preciodif >= margen or preciodif <= margen:
-
+        if preciodif >= -margen and preciodif <= margen:
             lista.append([lista_productos[numAle][0],"(economico)",lista_productos[numAle][1]])
             cont += 1
         else:
             preciodif = int(lista_productos[numAle][2])-producto[2]
-            if preciodif >= margen or preciodif <= margen:
-
+            if preciodif >= -margen and preciodif <= margen:
                 lista.append([lista_productos[numAle][0],"(premium)",lista_productos[numAle][2]])
                 cont += 1
-
 
     productos_seleccionados = [producto]
     while len(productos_seleccionados)<6:
@@ -113,5 +110,5 @@ def dameProductosAleatorios(producto, lista_productos, margen):
             prodNuevo = buscar_producto(lista_productos)
             if prodNuevo not in productos_seleccionados:
                 productos_seleccionados.append(prodNuevo)
-
     return productos_seleccionados
+
